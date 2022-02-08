@@ -1,4 +1,4 @@
-import {CATEGORY_STATE, RANDOM_SCROLL, SCROLL_STATE} from "./type";
+import {CATEGORY_POST, CATEGORY_STATE, INSIDE_CATEGORY, RANDOM_SCROLL, SCROLL_STATE} from "./type";
 import {toast} from "react-toastify";
 const mas = [];
 let num = 0;
@@ -100,6 +100,38 @@ export const category = () => {
             const jsonData = await response.json();
             dispatch({
                 type: CATEGORY_STATE,
+                data: jsonData.data,
+            })
+        } catch (err) {
+            toast.error("Ошибка Api" + err)
+        }
+    }
+}
+
+export const categoryPost = (name, count) => {
+
+    return async dispatch => {
+        try {
+            const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=sXpGFDGZs0Dv1mmNFvYaGUvYwKX0PWIh&q=${name}&limit=${count}&offset=${count}&rating=g&lang=en`);
+            const jsonData = await response.json();
+            dispatch({
+                type: CATEGORY_POST,
+                data: jsonData.data,
+            })
+        } catch (err) {
+            toast.error("Ошибка Api" + err)
+        }
+    }
+}
+
+
+export const insideCategory = (name, count) => {
+    return async dispatch => {
+        try {
+            const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=sXpGFDGZs0Dv1mmNFvYaGUvYwKX0PWIh&q=${name}&limit=${count}&offset=${count}&rating=g&lang=en`);
+            const jsonData = await response.json();
+            dispatch({
+                type: INSIDE_CATEGORY,
                 data: jsonData.data,
             })
         } catch (err) {

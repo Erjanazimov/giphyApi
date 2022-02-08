@@ -5,7 +5,7 @@ import {category} from "../../redux/actions";
 const Category = () => {
     const dispatch = useDispatch();
     useEffect(() => {
-       dispatch(category())
+        dispatch(category())
     }, [])
 
     const stateCategory = useSelector(state => state.categoryReducer.categories);
@@ -13,10 +13,10 @@ const Category = () => {
     return (
         <div>
             <div>
-            <button className="btn btn-outline-info  btnCategory" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                Категория
-            </button>
+                <button className="btn btn-outline-info  btnCategory" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                    Категория
+                </button>
             </div>
             <div className="offcanvas offcanvas-start" tabIndex="-1" id="offcanvasExample"
                  aria-labelledby="offcanvasExampleLabel">
@@ -29,21 +29,9 @@ const Category = () => {
                     <div className="accordion accordion-flush over" id="accordionFlushExample">
 
                         {stateCategory.map((item, index) => {
-                       return <div key={index} className="accordion-item">
-                            <h2 className="accordion-header" id="flush-headingOne">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target={`#flush-collapseOne${index}`} aria-expanded="false"
-                                        aria-controls={`flush-collapseOne${index}`}>
-                                    {item.name}
-                                </button>
-                            </h2>
-                            <div id={`flush-collapseOne${index}`} className="accordion-collapse collapse"
-                                 aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                <div>
-                                    <img className="img-fluid" src={item.gif.images.downsized.url}/>
-                                </div>
+                            return <div key={index} className="d-grid gap-2">
+                                    <a href={item.name_encoded} className="btn btn-outline-primary mb-2" type="button">{item.name}</a>
                             </div>
-                        </div>
                         })}
                     </div>
                 </div>

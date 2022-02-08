@@ -1,5 +1,10 @@
 a{
     text-decoration: none;
+    color: white;
+}
+
+li{
+    list-style: none;
 }
 
 hr{
@@ -40,6 +45,12 @@ hr{
 .over{
     height: 680px;
     overflow: auto;
+}
+
+.category{
+    border: 1px solid white;
+    padding: 10px;
+    width: 200px;
 }
 
 @media screen and (max-width: 528px){
